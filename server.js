@@ -2,6 +2,8 @@ const express = require('express'),
       hbs = require('hbs'),
       fs = require('fs');
 
+const port = process.env.PORT || 3000;
+
 let app = express();
 
 hbs.registerPartials(__dirname + '/views/partials');
@@ -54,21 +56,9 @@ app.get('/bad', (req, res) => {
     });
 });
 
-app.listen(3000, () => {
-    console.log('Server is up on port 3000');
+app.listen(port, () => {
+    console.log(`Server is up on port ${port}`);
 });
-
-
-
-function findUniq(arr) { //[0,1,0]
-  let x = 0;
-  while(arr[x] === arr[++x]) { 
-    x++;
-  } 
-  return ( arr[x] === arr[x + 1] ? arr[--x] : arr[x] ); //if [1] = [2] return 
-}
-
-findUniq([0,0,0,1]);
 
 
 
